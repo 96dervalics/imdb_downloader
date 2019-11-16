@@ -9,12 +9,24 @@ Download database files from imdb and process it
 * Download the repository, no need to install
 
 ## What is it doing
-* new.sh - contains an example of using (imdb_downloader.sh, converter.sh and csv_uploader.sh) to download, convert, and upload the imdb database
-* update.sh - contains an example of using (imdb_downloader.sh, converter.sh, differences.sh and csv_uploader.sh) to download, convert, and update the imdb database
-* imdb_downloader.sh - download the datafile(s) from the imdb website, and unzip the file(s). (zipped files will be deleted)
-* converter.sh - convert a file to .csv format and create a .coloumninfo file which contains only the first row of the file (so you can check the table coloumns, without opening the big file). (original .tsv file will be deleted)
-* differences.sh - compare two .csv file, create one .sql file with the help of .coloumninfo file
-* csv_uploader.sh - upload a .csv file to your database table. (the table must be exists, and the .csv file's name must be the database table name)
+* new.sh
+
+contains an example of using (imdb_downloader.sh, converter.sh and csv_uploader.sh) to download, convert, and upload the imdb database
+* update.sh
+
+contains an example of using (imdb_downloader.sh, converter.sh, differences.sh and csv_uploader.sh) to download, convert, and update the imdb database
+* imdb_downloader.sh
+
+download the datafile(s) from the imdb website, and unzip the file(s). (zipped files will be deleted)
+* converter.sh
+
+convert a file to .csv format and create a .coloumninfo file which contains only the first row of the file (so you can check the table coloumns, without opening the big file). (original .tsv file will be deleted)
+* differences.sh
+
+compare two .csv file, create one .sql file with the help of .coloumninfo file
+* csv_uploader.sh
+
+upload a .csv file to your database table. (the table must be exists, and the .csv file's name must be the database table name)
 
 ## How does it work
 

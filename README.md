@@ -6,9 +6,7 @@ Download database files from imdb and process it
 * gzip	*-to unzip the files*
 * mysqlimport	*-to upload the files to your database*
 
-## Installing
-
-Download the repository, no need to install
+* Download the repository, no need to install
 
 ## What is it doing
 * new.sh - contains an example of using (imdb_downloader.sh, converter.sh and csv_uploader.sh) to download, convert, and upload the imdb database
@@ -21,8 +19,6 @@ Download the repository, no need to install
 ## How does it work
 
 ### new.sh :
-
-* You run the script:
 ```
 ./new.sh
 ```
@@ -34,10 +30,8 @@ Download the repository, no need to install
 * Upload the data from the .csv files to the database
 
 ### update.sh :
-
-* You run the script:
 ```
-./new.sh
+./update.sh
 ```
 * It download the: name.basics.tsv.gz, title.akas.tsv.gz, title.basics.tsv.gz, title.crew.tsv.gz, title.ratings.tsv.gz files to a download2 directory
 * Then (in this order) convert them to: imdb_names.csv, imdb_region_movies.csv, imdb_movies.csv, imdb_makers.csv, imdb_ratings.csv
@@ -49,8 +43,6 @@ Download the repository, no need to install
 * Upload the data from the .sql files to the database
 
 ### imdb_downloader.sh :
-
-* You run the script:
 ```
 ./imdb_downloader.sh [folder path] (filename)
 ```
@@ -59,8 +51,6 @@ Download the repository, no need to install
 * *You can check the [datafiles here](https://datasets.imdbws.com/).*
 
 ### converter.sh :
-
-* You run the script:
 ```
 ./converter.sh [file] [converted name] (convert to folder)
 ```
@@ -69,18 +59,14 @@ Download the repository, no need to install
 * [convert to folder] - Is the foldername (relative to the [file] , you want to convert). It's optional, default is the directory where the [file] is.
 
 ### differences.sh :
-
-* You run the script:
 ```
-./converter.sh [previous file] [current file] [coloumn data]
+./differences.sh [previous file] [current file] [coloumn data]
 ```
 * [previous file] - Is the previous file (e.g. C:\Program Files\Tablet\name.basics.tsv). It's required
 * [current file] - Is the current file (e.g. C:\Program Files\Tablet\name_current.basics.tsv). It's required
 * [coloumn data] - Is the .coloumninfo file (doesn't matter if the previous, or the current file's).
 
 ### csv_uploader.sh :
-
-* You run the script:
 ```
 ./csv_uploader.sh [file] [database] [database username]
 ```

@@ -1,15 +1,20 @@
 #!/bin/bash
 
 file=$1
-convertFolder=$2
-convertedName=$3
+convertedName=$2
 
-if [ -z ${file} ] || [ -z ${convertFolder} ] || [ -z ${convertedName} ]
+if [ -z ${3} ]
 then
-	echo "./converter.sh [file] [convert to folder] [converted name]"
+	convertFolder=""
+else
+	convertFolder=$3
+fi
+
+if [ -z ${file} ] || [ -z ${convertedName} ]
+then
+	echo "./converter.sh [file] [converted name] (convert to folder)"
 else
 	baseName=$(basename "$1")
-	#fileExtension="${baseName##*.}"
 	fileName="${baseName%.*}"
 
 	dirName=$(dirname "$1")
@@ -35,13 +40,6 @@ else
 	firstLineFile=$dirName/$convertFolder/$convertedName"_coloumn_data.txt"
 	line=$(head -n 1 ${convertedFile})
 	echo $line > $firstLineFile
-
-	#delete first line
-	#sed -i '1d' $convertedFile
-
-	#split file
-	#splittedFile=$convertedFile
-	#split -l ${lineNumber} -d $convertedFile $splittedFile
 
 	echo "STEP #5 : Finish"
 fi

@@ -1,27 +1,33 @@
 #!/bin/bash
 
-file=$1
-coloumnData=$2
+prevFile=$1
+currFile=$2
+coloumnData=$3
 
-baseName=$(basename ${file})
+baseName=$(basename ${currFile})
 fileName="${baseName%.*}"
-dirName=$(dirname ${file})
+dirName=$(dirname ${currFile})
 
-#diff db/title.ratings.tsv download/title.ratings.tsv --speed-large-files --color=always
-
-if [ -z ${file} ] || [ -z ${coloumnData} ]
+if [ -z ${prevFile} ] || [ -z ${currFile} ] || [ -z ${coloumnData} ]
 then
-    echo "./differences.sh [file] [coloumn data]"
+    echo "./differences.sh [previous file] [current file] [coloumn data]"
 else
-	echo "STEP #1 : Put ${coloumnData} to array"
-	
+	echo "---------------- START ----------------"
+	echo "-----| IMDB datafile differences |-----"
+	echo "---------------------------------------"
+
+	differences="${dirName}/${fileName}.differences"
+	echo "STEP #1 : Create ${differences}"
+	diff ${prevFile} ${currFile} --speed-large-files > ${differences}
+
+	echo "STEP #2 : Put ${coloumnData} to array"
 	IFS=',' read -r -a colData <<< $(cat $coloumnData)
 
-	echo "STEP #2 : Create output .sql"
 	fileOut="${dirName}/${fileName}.sql"
+	echo "STEP #3 : Create ${fileOut}"
 	touch ${fileOut}
 
-	echo "STEP #3 : Read ${file}"
+	echo "STEP #4 : Read ${differences}"
 	while read row; 
 	do
 		data=${row:2}
@@ -46,7 +52,11 @@ else
 		then 
 			echo "INSERT INTO ${fileName} VALUES (${data});" >> ${fileOut}
 		fi
-	done < ${file}
+	done < ${differences}
+	rm ${differences}
 
-	echo "STEP #4 : Finish"
+	echo "STEP #5 : Finish"
+	echo "---------------------------------------"
+	echo "-----| IMDB datafile differences |-----"
+	echo "---------------- END ------------------"
 fi

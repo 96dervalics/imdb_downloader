@@ -20,6 +20,9 @@ else
 	dirName=$(dirname "$1")
 	lineNumber=500000
 
+	echo "----------------- START ----------------"
+	echo "------| IMDB  datafile converter |------"
+	echo "----------------------------------------"
 	#create directory
 	echo "STEP #1 : Check if ${dirName}/${convertFolder} exists"
 	if [ -d ${dirName}/${convertFolder} ]
@@ -36,10 +39,16 @@ else
 	sed 's/\t/,/g' $file > $convertedFile
 
 	#get first line
-	echo "STEP #4 : Get first line of the file (${dirName}/${convertFolder}/${convertedName}_coloumn_data.txt)"
-	firstLineFile=$dirName/$convertFolder/$convertedName"_coloumn_data.txt"
+	echo "STEP #4 : Get first line of the file (${dirName}/${convertFolder}/${convertedName}.coloumninfo)"
+	firstLineFile=$dirName/$convertFolder/$convertedName".coloumninfo"
 	line=$(head -n 1 ${convertedFile})
 	echo $line > $firstLineFile
 
-	echo "STEP #5 : Finish"
+	echo "STEP #5 : Remove ${file}"
+	rm ${file}
+
+	echo "STEP #6 : Finish"
+	echo "----------------------------------------"
+	echo "------| IMDB  datafile converter |------"
+	echo "----------------- END ------------------"
 fi

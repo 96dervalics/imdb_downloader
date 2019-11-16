@@ -58,7 +58,7 @@ upload a .csv file to your database table. (the table must be exists, and the .c
 ```
 ./imdb_downloader.sh [folder path] (filename)
 ```
-* [folder path] - Is the folder path where you want to download the database files (e.g. C:\Program Files\Tablet). It's required
+* [folder path] - Is the folder path where you want to download the database files (e.g. C:\Program Files\Tablet).
 * (filename) - If you want to download only one file from the IMDB datafiles (e.g. name.basics.tsv.gz). It's optional. Otherwise it will download all of the datafiles
 * *You can check the [datafiles here](https://datasets.imdbws.com/).*
 
@@ -66,25 +66,25 @@ upload a .csv file to your database table. (the table must be exists, and the .c
 ```
 ./converter.sh [file] [converted name] (convert to folder)
 ```
-* [file] - Is the file you want to convert (e.g. C:\Program Files\Tablet\name.basics.tsv). It's required
-* [converted name] - Is the converted filename (e.g. names). It's required
+* [file] - Is the file you want to convert (e.g. C:\Program Files\Tablet\name.basics.tsv).
+* [converted name] - Is the converted filename (e.g. names).
 * [convert to folder] - Is the foldername (relative to the [file] , you want to convert). It's optional, default is the directory where the [file] is.
 
 ### differences.sh :
 ```
 ./differences.sh [previous file] [current file] [coloumn data]
 ```
-* [previous file] - Is the previous file (e.g. C:\Program Files\Tablet\name.basics.tsv). It's required
-* [current file] - Is the current file (e.g. C:\Program Files\Tablet\name_current.basics.tsv). It's required
+* [previous file] - Is the previous file (e.g. C:\Program Files\Tablet\name.basics.tsv).
+* [current file] - Is the current file (e.g. C:\Program Files\Tablet\name_current.basics.tsv).
 * [coloumn data] - Is the .coloumninfo file (doesn't matter if the previous, or the current file's).
 
 ### csv_uploader.sh :
 ```
 ./csv_uploader.sh [file] [database] [database username]
 ```
-* [file] - Is the file you want to upload to your mysql database. The file must be named the table name. It's required
-* [database] - The name of your database. It's required
-* [database username] - Username of your [database]. It's required
+* [file] - Is the file you want to upload to your mysql database. The file must be named the table name.
+* [database] - The name of your database.
+* [database username] - Username of your [database].
 
 ## License
 
